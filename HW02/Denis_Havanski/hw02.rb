@@ -3,28 +3,20 @@ module HDArrayMethods
 
     def my_map
       if block_given?
-        main_array = self
         ret_array = []
-        last_el = self.size
-
-        for i in 0...last_el
-          ret_array << yield(main_array[i])
+        for i in 0...self.size
+          ret_array << yield(self[i])
         end
-
         ret_array
       end
     end
 
-
     def my_select
       if block_given?
-        main_array = self
         ret_array = []
-        last_el = self.size
-
-        for i in 0...last_el
-          if yield(main_array[i]) == true
-            ret_array << main_array[i]
+        for i in 0...self.size
+          if yield(self[i]) == true
+            ret_array << self[i]
           end
         end
         ret_array
@@ -33,14 +25,10 @@ module HDArrayMethods
 
     def my_each
       if block_given?
-        main_array = self
-        ret_array = []
-        last_el = self.size
-
-        for i in 0...last_el
-          yield(main_array[i])
+        for i in 0...self.size
+          yield(self[i])
         end
-        main_array
+        self
       end
     end
 
@@ -51,12 +39,12 @@ using HDArrayMethods
 
 array = [1,2,3,4,5,6,65]
 
-p array.my_map {|e| e**2 }
+p array.my_map {|e| e**2 + 3 }
 
-p array.my_select {|e| e.even?}
+p array.my_select {|e| e.even? == false}
 
 ar_new = []
-p array.my_each {|e| ar_new << e.to_s + "!"}
-
+p array.my_each {|e| ar_new << e.to_s + "!" + "$"}
 p ar_new
+
 
