@@ -35,16 +35,4 @@ module HDArrayMethods
   end
 end
 
-using HDArrayMethods
-
-array = [1,2,3,4,5,6,65]
-
-p array.my_map {|e| e**2 + 3 }
-
-p array.my_select {|e| e.even? == false}
-
-ar_new = []
-p array.my_each {|e| ar_new << e.to_s + "!" + "$"}
-p ar_new
-
 
