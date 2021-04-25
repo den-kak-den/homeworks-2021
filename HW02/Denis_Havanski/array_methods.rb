@@ -1,4 +1,4 @@
-module HDArrayMethods
+module ArrayMethods
   refine Array do
 
     def my_map
@@ -15,9 +15,7 @@ module HDArrayMethods
       if block_given?
         ret_array = []
         for i in 0...self.size
-          if yield(self[i]) == true
-            ret_array << self[i]
-          end
+          ret_array << self[i] if yield(self[i])
         end
         ret_array
       end
@@ -34,5 +32,3 @@ module HDArrayMethods
 
   end
 end
-
-
