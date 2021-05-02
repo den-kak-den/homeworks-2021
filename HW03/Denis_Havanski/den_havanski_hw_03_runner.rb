@@ -27,3 +27,8 @@ puts "\n----- Task_2 -----"
 puts task_2(logs)
 
 #######################
+
+puts "\n----- Task_4 -----"
+puts task_4("hel2!lo")
+puts task_4("wicked .. !")
+puts task_4("LJjom&*&odfщоыо/?<вадоыва938984:*(Щьдьждб*&(*KJLMLM<:<")
