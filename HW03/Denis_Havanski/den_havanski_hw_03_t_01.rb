@@ -1,13 +1,8 @@
 def task_1(logs)
 
   array = logs.split("\n")
-  #puts array.class
-  array.each do |line|
-    #binding.irb
-    if line.downcase.include?("error")
-      return line
-    end
-  end
+  array.each { |line| return line if line.downcase.include?("error") }
   return ''
+
 end
 
