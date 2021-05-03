@@ -22,7 +22,6 @@ def task_3(logs)
     diff = -(time_array[i] - time_array[i + 1])
     result << diff.to_s
     i += 1
-    #puts i
   end
 
   if result.size == 1
