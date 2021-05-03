@@ -1,18 +1,19 @@
+# frozen_string_literal: true
 
 require 'time'
 
-TIME_REG = /^[2]0[0-9]{2}\-[0-1]\d\-[0-3]\d\s[0-2]\d\:[0-5]\d\:[0-5]\d\.[0-9]/.freeze
+TIME_REG = /^20[0-9]{2}-[0-1]\d-[0-3]\d\s[0-2]\d:[0-5]\d:[0-5]\d\.[0-9]/.freeze
 
-def task_3(logs)
+def task3(logs)
   array = logs.split("\n")
   time_array = []
 
   array.each do |line|
-    if line.include? "Calling core"
-      timestring = line.slice(TIME_REG)
-      timestamp = Time.parse(timestring)
-      time_array << timestamp
-      end
+    next unless line.include? 'Calling core'
+
+    timestring = line.slice(TIME_REG)
+    timestamp = Time.parse(timestring)
+    time_array << timestamp
   end
 
   ta_size = time_array.size
@@ -25,11 +26,10 @@ def task_3(logs)
   end
 
   if result.size == 1
-    return result[0]
+    result[0]
   elsif result.empty?
-    return "0"
+    '0'
   else
-    return result
+    result
   end
-
 end

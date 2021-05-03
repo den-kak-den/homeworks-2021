@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'den_havanski_hw_03_t_01'
 require_relative 'den_havanski_hw_03_t_02'
 require_relative 'den_havanski_hw_03_t_03'
 require_relative 'den_havanski_hw_03_t_04'
-
 
 logs = <<~INPUT
   10.6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /grid/2/messages HTTP/1.1" 200 48 0.0498
@@ -11,8 +12,8 @@ logs = <<~INPUT
   10.6.246.101 - - [23/Apr/2018:20:29:39 +0300] "POST /grid/2/messages HTTP/1.1" 200 48 0.0290
 INPUT
 
-puts "----- Task_1 -----"
-puts task_1(logs)
+puts '----- Task_1 -----'
+puts task1(logs)
 
 #######################
 
@@ -24,7 +25,7 @@ logs = <<~INPUT
 INPUT
 
 puts "\n----- Task_2 -----"
-puts task_2(logs)
+puts task2(logs)
 
 #######################
 
@@ -39,11 +40,11 @@ logs = <<~INPUT
 INPUT
 
 puts "\n----- Task_3 -----"
-puts task_3(logs)
+puts task3(logs)
 
 #######################
 
 puts "\n----- Task_4 -----"
-puts task_4("hel2!lo")
-puts task_4("wicked .. !")
-puts task_4("LJjom&*&odfщоыо/?<вадоыва938984:*(Щьдьждб*&(*KJLMLM<:<")
+puts task4('hel2!lo')
+puts task4('wicked .. !')
+puts task4('LJjom&*&odfщоыо/?<вадоыва938984:*(Щьдьждб*&(*KJLMLM<:<')
