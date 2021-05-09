@@ -1,6 +1,6 @@
 class Mentor
   attr_reader :name, :surname, :students
-  attr_writer :students
+  attr_writer :students, :new_notifications
 
   def initialize(name: :name, surname: :surname)
     @name = name
@@ -8,6 +8,7 @@ class Mentor
     @students = []
     @new_notifications = {}
     @read_notifications = {}
+    $added_homeworks = []
   end
 
   def new_notification(new_note)
@@ -40,7 +41,9 @@ class Mentor
   def add_new_home_task(title, task, post_comment, date_dl)
     new_home_task = Homework.new(title, task, post_comment, date_dl)
     p new_home_task
+    $added_homeworks << new_home_task
     sent_notification("Mentor add new hometask #{title}", @students[0])
+    p $added_homeworks
   end
 
 end

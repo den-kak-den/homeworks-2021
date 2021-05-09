@@ -18,14 +18,8 @@ p mentor.students
 mentor.notifications # => {}
 student.notifications
 
-# student.submit_homework(homework_data)
-# student.homeworks # => [Homework, ...]
-#
+student.subscribe_to(mentor)
 
-#
-# student.submit_homework!(homework_data)
-# mentor.notifications # => [Notification, ...]
-#
 mentor.read_notifications!
 mentor.notifications # => {}
 student.read_notifications!
@@ -33,5 +27,15 @@ student.notifications
 
 mentor.add_new_home_task('HW01', 'Add some...', 'HARD!!!', '01.02.2021')
 student.notifications # => {"Mentor add new hometask HW01"=>2021-05-09 22:15:37.533869875 +0300}
+puts "3214345321"
+student.submit_homework(0)
+student.homeworks # => [Homework, ...]
+mentor.notifications
+mentor.read_notifications!
+student.submit_homework!(0)
+mentor.notifications # => [Notification, ...]
+
+
+
 
 
