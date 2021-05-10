@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Notification
-  attr_reader :content, :date, :read_status, :read_date
-  attr_writer :read_status, :read_date
+  attr_accessor :read_status, :read_date
+  attr_reader :content, :date
 
   def initialize(content: :content, date: :date)
     @content = content
@@ -8,7 +10,4 @@ class Notification
     @read_status = 'unread'
     @read_date = nil
   end
-
-
-
 end

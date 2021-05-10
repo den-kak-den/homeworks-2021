@@ -1,20 +1,26 @@
-class Mentor
-  attr_reader :name, :surname, :students
-  attr_writer :students, :new_notifications
+# frozen_string_literal: true
 
-  def initialize(name: :name, surname: :surname)
-    @name = name
-    @surname = surname
+require_relative 'human'
+
+class Mentor < Human
+  attr_accessor :students
+  attr_writer :new_notifications
+
+  def initialize(name: '', surname: '')
+    super
+    @status = 'mentor'
     @students = []
-    @new_notifications = {}
-    @read_notifications = {}
     $added_homeworks = []
+    @access_status = 'authorized'
   end
 
   def new_notification(new_note)
     @new_notifications[Time.now] = new_note
-
   end
+
+  # def look_hw_base
+  #   p "hw_base: #{@@hw_base}"
+  # end
 
   def sent_notification(new_note, student)
     student.new_notification(new_note)
@@ -22,6 +28,8 @@ class Mentor
 
   def subscribe_to(student)
     @students << student
+    student.instance_variable_set(:@access_status, 'authorized')
+    puts "#{student} are authorized by #{self}"
     new_notification('New student was added')
   end
 
@@ -34,8 +42,8 @@ class Mentor
       @read_notifications.merge!(k => v)
     end
     @new_notifications.clear
-    puts "No more new notifications for Mentor"
-    #p @read_notifications
+    puts 'No more new notifications for Mentor'
+    # p @read_notifications
   end
 
   def add_new_home_task(title, task, post_comment, date_dl)
@@ -46,4 +54,10 @@ class Mentor
     p $added_homeworks
   end
 
+  def change_hometask(homework, changes: :hash)
+    changes.each_pair do |k, v|
+      homework.instance_variable_set(k, v)
+      puts "The new #{k} of #{homework} is: #{v} \n"
+    end
+  end
 end

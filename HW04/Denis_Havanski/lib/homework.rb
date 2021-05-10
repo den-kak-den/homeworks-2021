@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class Homework
-  attr_reader :task, :post_comment, :date_post, :m_comment, :date_dl, :title
-  attr_writer :status, :m_comment, :st_comment, :date_dl
+  attr_accessor :m_comment, :date_dl
+  attr_reader :task, :post_comment, :date_post, :title
+  attr_writer :status, :st_comment
 
   def initialize(title, task, post_comment, date_dl)
     @title = title
@@ -11,7 +14,13 @@ class Homework
     @status = 'posted_by_mentor'
     @m_comment = ''
     @st_comment = ''
-
   end
 
+  def about
+    puts "Homework #{title}:\n #{task} \n #{date_dl}"
+  end
+
+  # def change!(homework, var, new_value)
+  #   homework.instance_variable_set(var = new_value)
+  # end
 end
