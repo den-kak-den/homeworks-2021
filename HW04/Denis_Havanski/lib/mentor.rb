@@ -18,10 +18,6 @@ class Mentor < Human
     @new_notifications[Time.now] = new_note
   end
 
-  # def look_hw_base
-  #   p "hw_base: #{@@hw_base}"
-  # end
-
   def sent_notification(new_note, student)
     student.new_notification(new_note)
   end
@@ -43,15 +39,13 @@ class Mentor < Human
     end
     @new_notifications.clear
     puts 'No more new notifications for Mentor'
-    # p @read_notifications
   end
 
   def add_new_home_task(title, task, post_comment, date_dl)
     new_home_task = Homework.new(title, task, post_comment, date_dl)
     p new_home_task
     $added_homeworks << new_home_task
-    sent_notification("Mentor add new hometask #{title}", @students[0])
-    p $added_homeworks
+    sent_notification("Mentor add new home-task #{title}", @students[0])
   end
 
   def change_hometask(homework, changes: :hash)

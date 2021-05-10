@@ -2,8 +2,6 @@
 
 class Human
   attr_reader :name, :surname, :status
-
-  attr_writer
   attr_accessor :new_notifications, :access_status
 
   def initialize(name: :name, surname: :surname)

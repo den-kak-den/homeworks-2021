@@ -3,7 +3,6 @@
 require_relative 'human'
 
 class Student < Human
-  # attr_reader :name, :surname, :status
   attr_writer :new_homework, :new_notifications, :mentors
 
   def initialize(name: '', surname: '')
@@ -41,16 +40,11 @@ class Student < Human
     new_notification('New mentor was added')
   end
 
-  # Таkе HW to doing
   def submit_homework(homework_data)
-    # p $added_homeworks[homework_data].class
     @st_homeworks << $added_homeworks[homework_data]
-    # p @mentors[0]
     sent_notification("Student took hometask HW0#{homework_data + 1} to working", @mentors[0])
-    # p @st_homeworks
   end
 
-  # Add HW to check
   def submit_homework!(homework_data)
     sent_notification("Student added hometask HW0#{homework_data + 1} to CHECK", @mentors[0])
   end
@@ -61,7 +55,7 @@ class Student < Human
 
   def look_hw_base
     if @mentors.empty?
-      puts "!!! ACCESS ERROR: Your aren't added to authorized person. "
+      puts "!!! ACCESS ERROR: Your aren't added as authorized person. "
     else
       super
     end

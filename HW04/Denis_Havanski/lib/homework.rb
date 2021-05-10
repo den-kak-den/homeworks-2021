@@ -17,10 +17,6 @@ class Homework
   end
 
   def about
-    puts "Homework #{title}:\n #{task} \n #{date_dl}"
+    puts "Homework #{title}:\n task: #{task} \n DL: #{date_dl}"
   end
-
-  # def change!(homework, var, new_value)
-  #   homework.instance_variable_set(var = new_value)
-  # end
 end
