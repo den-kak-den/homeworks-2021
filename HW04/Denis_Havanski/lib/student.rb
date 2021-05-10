@@ -54,9 +54,9 @@ class Student < Human
   end
 
   def look_hw_base
-    if @mentors.empty?
-      puts "!!! ACCESS ERROR: Your aren't added as authorized person. "
-    else
+    if @access_status == 'unauthorized'
+      puts "!!! ACCESS ERROR: Your aren't added as authorized person!"
+    elsif @access_status == 'authorized'
       super
     end
   end
