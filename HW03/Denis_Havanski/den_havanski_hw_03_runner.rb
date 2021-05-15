@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# check
+
 require_relative 'den_havanski_hw_03_t_01'
 require_relative 'den_havanski_hw_03_t_02'
 require_relative 'den_havanski_hw_03_t_03'
