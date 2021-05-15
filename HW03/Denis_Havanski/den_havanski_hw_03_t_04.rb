@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# check
 LETTERS_REG = 'A-Za-zА-Яа-яё'
 DIGITS_REG = '0-9'
 
