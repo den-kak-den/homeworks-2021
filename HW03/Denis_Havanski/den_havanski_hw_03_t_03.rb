@@ -16,13 +16,19 @@ def task3(logs)
     time_array << timestamp
   end
 
-  ta_size = time_array.size
+  # ta_size = time_array.size
+  # result = []
+  # i = 0
+  # while i < (ta_size - 1)
+  #   diff = -(time_array[i] - time_array[i + 1])
+  #   result << diff.to_s
+  #   i += 1
+  # end
+
   result = []
-  i = 0
-  while i < (ta_size - 1)
-    diff = -(time_array[i] - time_array[i + 1])
+  time_array.each_cons(2) do |el|
+    diff = el[1] - el[0]
     result << diff.to_s
-    i += 1
   end
 
   if result.size == 1
