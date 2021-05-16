@@ -31,7 +31,6 @@ class Student < Human
     end
     @new_notifications.clear
     puts 'No more new notifications for Student'
-    # p @read_notifications
   end
 
   def subscribe_to(mentor)
