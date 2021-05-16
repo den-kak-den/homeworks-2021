@@ -9,7 +9,7 @@ class Human
     @name = name
     @surname = surname
     @new_notifications = {}
-    @read_notifications = {}
+    @archived_notifications = {}
     @status = ''
     @access_status = ''
   end

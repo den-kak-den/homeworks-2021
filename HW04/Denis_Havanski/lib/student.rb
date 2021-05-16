@@ -26,8 +26,8 @@ class Student < Human
   end
 
   def read_notifications!
-    @new_notifications.each_pair do |k, v|
-      @read_notifications.merge!(k => v)
+    @new_notifications.each_pair do |key, value|
+      @archived_notifications.merge!(key => value)
     end
     @new_notifications.clear
     puts 'No more new notifications for Student'

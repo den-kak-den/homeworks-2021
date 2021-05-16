@@ -34,8 +34,8 @@ class Mentor < Human
   end
 
   def read_notifications!
-    @new_notifications.each_pair do |k, v|
-      @read_notifications.merge!(k => v)
+    @new_notifications.each_pair do |key, value|
+      @archived_notifications.merge!(key => value)
     end
     @new_notifications.clear
     puts 'No more new notifications for Mentor'
@@ -49,9 +49,9 @@ class Mentor < Human
   end
 
   def change_hometask(homework, changes: :hash)
-    changes.each_pair do |k, v|
-      homework.instance_variable_set(k, v)
-      puts "The new #{k} of #{homework} is: #{v} \n"
+    changes.each_pair do |key, value|
+      homework.instance_variable_set(key, value)
+      puts "The new #{key} of #{homework} is: #{value} \n"
     end
   end
 end
