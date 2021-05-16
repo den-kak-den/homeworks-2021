@@ -30,7 +30,7 @@ class Mentor < Human
   end
 
   def notifications
-    p @new_notifications
+    puts @new_notifications
   end
 
   def read_notifications!
@@ -43,7 +43,7 @@ class Mentor < Human
 
   def add_new_home_task(title, task, post_comment, date_dl)
     new_home_task = Homework.new(title, task, post_comment, date_dl)
-    p new_home_task
+    puts new_home_task
     $added_homeworks << new_home_task
     sent_notification("Mentor add new home-task #{title}", @students[0])
   end

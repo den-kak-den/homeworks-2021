@@ -19,6 +19,6 @@ class Human
   end
 
   def look_hw_base
-    p "hw_base: #{@@hw_base}"
+    puts "hw_base: #{@@hw_base}"
   end
 end

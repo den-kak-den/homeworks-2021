@@ -22,7 +22,7 @@ class Student < Human
   end
 
   def notifications
-    p @new_notifications
+    puts @new_notifications
   end
 
   def read_notifications!
@@ -35,7 +35,7 @@ class Student < Human
 
   def subscribe_to(mentor)
     @mentors << mentor
-    p "@mentors = #{@mentors}"
+    puts "@mentors = #{@mentors}"
     new_notification('New mentor was added')
   end
 
@@ -49,7 +49,7 @@ class Student < Human
   end
 
   def homeworks
-    p @st_homeworks
+    puts @st_homeworks
   end
 
   def look_hw_base
