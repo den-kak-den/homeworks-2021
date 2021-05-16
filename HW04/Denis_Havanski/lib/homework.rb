@@ -12,8 +12,7 @@ class Homework
     @date_dl = date_dl
     @date_post = Time.now
     @status = 'posted_by_mentor'
-    @m_comment = ''
-    @st_comment = ''
+    @comments = {}
   end
 
   def about
