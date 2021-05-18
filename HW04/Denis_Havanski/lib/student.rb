@@ -11,6 +11,8 @@ class Student < Human
     @st_homeworks = []
     @status = 'student'
     @access_status = 'unauthorized'
+    @new_notifications = {}
+    @archived_notifications = {}
   end
 
   def new_notification(new_note)
@@ -40,7 +42,7 @@ class Student < Human
   end
 
   def submit_homework(homework_data)
-    @st_homeworks << $added_homeworks[homework_data]
+    @st_homeworks << $all_homeworks[homework_data]
     sent_notification("Student took hometask HW0#{homework_data + 1} to working", @mentors[0])
   end
 
@@ -56,7 +58,12 @@ class Student < Human
     if @access_status == 'unauthorized'
       puts "!!! ACCESS ERROR: Your aren't added as authorized person!"
     elsif @access_status == 'authorized'
-      super
+      #super
+      $all_homeworks
     end
+  end
+
+  def about
+    puts "#{@status}: #{@name} #{@surname}"
   end
 end

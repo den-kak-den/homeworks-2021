@@ -10,8 +10,10 @@ class Mentor < Human
     super
     @status = 'mentor'
     @students = []
-    $added_homeworks = []
+    $all_homeworks = []
     @access_status = 'authorized'
+    @new_notifications = {}
+    @archived_notifications = {}
   end
 
   def new_notification(new_note)
@@ -44,7 +46,7 @@ class Mentor < Human
   def add_new_home_task(title, task, post_comment, date_dl)
     new_home_task = Homework.new(title, task, post_comment, date_dl)
     puts new_home_task
-    $added_homeworks << new_home_task
+    $all_homeworks << new_home_task
     sent_notification("Mentor add new home-task #{title}", @students[0])
   end
 
@@ -54,4 +56,13 @@ class Mentor < Human
       puts "The new #{key} of #{homework} is: #{value} \n"
     end
   end
+
+  def about
+    puts "#{@status}: #{@name} #{@surname}"
+  end
+
+  def look_hw_base
+    $all_homeworks
+  end
+
 end
