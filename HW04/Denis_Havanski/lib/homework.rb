@@ -16,6 +16,6 @@ class Homework
   end
 
   def about
-    puts "Homework #{title}:\n task: #{task} \n DL: #{date_dl}"
+    "Homework #{title}:\n task: #{task} \n DL: #{date_dl}"
   end
 end
