@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module HwRepository
+module Repository
   @all_homeworks = []
 
   def self.show_all_hw

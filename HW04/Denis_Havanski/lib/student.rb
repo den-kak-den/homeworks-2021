@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require_relative 'human'
-require_relative 'HwRepository'
+require_relative 'repository'
 
 class Student < Human
   attr_writer :new_homework, :new_notif_base, :mentors
-  include HwRepository
+  include Repository
 
   def initialize(name: '', surname: '')
     super
@@ -44,7 +44,7 @@ class Student < Human
   end
 
   def submit_homework(homework_data)
-    @student_homeworks << (HwRepository.show_all_hw)[homework_data - 1]
+    @student_homeworks << (Repository.show_all_hw)[homework_data - 1]
     sent_notification("Student took hometask HW0#{homework_data} to working", @mentors[0])
   end
 
@@ -57,18 +57,18 @@ class Student < Human
   end
 
   def show_hw_base
-    return HwRepository.show_all_hw
+    return Repository.show_all_hw
   end
 
   def look_hw_base
     if @access_status == 'unauthorized'
       "!!! ACCESS ERROR: Your aren't added as authorized person!"
     elsif @access_status == 'authorized'
-      HwRepository.show_all_hw
+      Repository.show_all_hw
     end
   end
 
-  def show_info_about_this_student
+  def show_student_information
     "#{@status}: #{@name} #{@surname}"
   end
 end

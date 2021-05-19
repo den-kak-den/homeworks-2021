@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require_relative 'human'
-require_relative 'HwRepository'
+require_relative 'repository'
 
 class Mentor < Human
   attr_accessor :students
   attr_writer :new_notif_base
-  include HwRepository
+  include Repository
 
   def initialize(name: '', surname: '')
     super
@@ -46,7 +46,7 @@ class Mentor < Human
 
   def add_new_home_task(title, task, post_comment, date_dl)
     new_home_task = Homework.new(title, task, post_comment, date_dl)
-    HwRepository.add_into_all_hw(new_home_task)
+    Repository.add_into_all_hw(new_home_task)
     st_number = @students.size
     for st_index in (0...st_number) do
     sent_notification("Mentor add new home-task #{title}", @students[st_index])
@@ -60,15 +60,15 @@ class Mentor < Human
     end
   end
 
-  def show_info_about_this_mentor
+  def show_mentor_information
     "#{@status}: #{@name} #{@surname}"
   end
 
   def look_hw_base
-    return (HwRepository::show_all_hw)
+    return (Repository::show_all_hw)
   end
 
   def add_to_hw_base(elem)
-    return (HwRepository.add_into_all_hw(elem))
+    return (Repository.add_into_all_hw(elem))
   end
 end
