@@ -1,24 +1,24 @@
 # frozen_string_literal: true
 
 require_relative 'human'
-require_relative 'modules'
+require_relative 'HwRepository'
 
 class Mentor < Human
   attr_accessor :students
-  attr_writer :new_notifications
-  include AllHomeworks
+  attr_writer :new_notif_base
+  include HwRepository
 
   def initialize(name: '', surname: '')
     super
     @status = 'mentor'
     @students = []
     @access_status = 'authorized'
-    @new_notifications = {}
-    @archived_notifications = {}
+    @new_notif_base = {}
+    @archived_notif_base = {}
   end
 
   def new_notification(new_note)
-    @new_notifications[Time.now] = new_note
+    @new_notif_base[Time.now] = new_note
   end
 
   def sent_notification(new_note, student)
@@ -33,43 +33,42 @@ class Mentor < Human
   end
 
   def notifications
-    @new_notifications
+    @new_notif_base
   end
 
   def read_notifications!
-    @new_notifications.each_pair do |key, value|
-      @archived_notifications.merge!(key => value)
+    @new_notif_base.each_pair do |time, content|
+      @archived_notif_base.merge!(time => content)
     end
-    @new_notifications.clear
+    @new_notif_base.clear
     'No more new notifications for Mentor'
   end
 
   def add_new_home_task(title, task, post_comment, date_dl)
     new_home_task = Homework.new(title, task, post_comment, date_dl)
-    AllHomeworks.add_into_all_hw(new_home_task)
+    HwRepository.add_into_all_hw(new_home_task)
     st_number = @students.size
-    for i in (0...st_number) do
-    sent_notification("Mentor add new home-task #{title}", @students[i])
+    for st_index in (0...st_number) do
+    sent_notification("Mentor add new home-task #{title}", @students[st_index])
     end
   end
 
   def change_hometask(homework, changes: :hash)
-    changes.each_pair do |key, value|
-      homework.instance_variable_set(key, value)
-      "The new #{key} of #{homework} is: #{value} \n"
+    changes.each_pair do |point, new_content|
+      homework.instance_variable_set(point, new_content)
+      "The new #{point} of #{homework} is: #{new_content} \n"
     end
   end
 
-  def about
+  def show_info_about_this_mentor
     "#{@status}: #{@name} #{@surname}"
   end
 
   def look_hw_base
-    return (AllHomeworks::show_all_hw)
+    return (HwRepository::show_all_hw)
   end
 
   def add_to_hw_base(elem)
-    return (AllHomeworks::add_into_all_hw(elem))
+    return (HwRepository.add_into_all_hw(elem))
   end
-
 end

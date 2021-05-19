@@ -7,10 +7,10 @@ require_relative 'lib/notification'
 require_relative 'lib/human'
 
 student = Student.new(name: 'John', surname: 'Doe')
-student.about
+student.show_info_about_this_student
 
 mentor = Mentor.new(name: 'Jack', surname: 'Gonsales')
-mentor.about
+mentor.show_info_about_this_mentor
 
 homework = Homework.new('HW01', 'make...', 'now!', '01.02.2021')
 homework.about
