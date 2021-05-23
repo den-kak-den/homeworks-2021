@@ -1,4 +1,4 @@
-module ArrayMethods # CHECK
+module ArrayMethods
   refine Array do
 
     def my_map
