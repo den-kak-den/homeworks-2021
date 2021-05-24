@@ -29,24 +29,30 @@ RSpec.describe 'task3' do
     end
 
     let(:log_only_one_val_event) do <<~INPUT
-  2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - Calling core with action: event
-  2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101
-  2018-04-23 17:17:49.8 ubuntu-xenial[14319] Debug - docker event processed
-  2018-04-23 17:18:19.5 ubuntu-xenial[14319] Debug - monitoring grid communication health
-  2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug -  with action: messages
-  2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101
-  2018-04-23 17:18:59.8 ubuntu-xenial[14319] Debug - inside docker_handle_event
+      2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - Calling core with action: event
+      2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101
+      2018-04-23 17:17:49.8 ubuntu-xenial[14319] Debug - docker event processed
+      2018-04-23 17:18:19.5 ubuntu-xenial[14319] Debug - monitoring grid communication health
+      2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug -  with action: messages
+      2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101
+      2018-04-23 17:18:59.8 ubuntu-xenial[14319] Debug - inside docker_handle_event
     INPUT
     end
 
-    context 'when there are no valid events' do
-      it 'there are no valid events at the entrance' do
-        # array = ["23/Apr/2018:20:30:39 +0300 FROM: 10.6.246.103 TO: /TEST/2/MESSAGES", "23/Apr/2018:20:30:42 +0300 FROM: 10.6.246.101 TO: /TEST/2/RUN", "23/Apr/2018:20:31:39 +0300 FROM: 10.6.246.101 TO: /TEST/2/MESSAGES"]
-        # expect( task2(log_normal) ).to eql(array)
-      end
+    let(:log_no_val_events) do <<~INPUT
+      2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - core with action: event
+      2018-04-23 17:17:49.7 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101
+      2018-04-23 17:17:49.8 ubuntu-xenial[14319] Debug - Cal docker event processed
+      2018-04-23 17:18:19.5 ubuntu-xenial[14319] Debug - monitoring grid communication health
+      2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug -  with action: messages
+      2018-04-23 17:18:38.8 ubuntu-xenial[14319] Debug - connecting to: 10.6.246.101
+      2018-04-23 17:18:59.8 ubuntu-xenial[14319] Debug - inside docker_handle_event
+    INPUT
+    end
 
-      it 'there is only one valid event' do
-
+    context 'when there are no valid events or only one' do
+      it 'return "0"' do
+        expect( task3(log_no_val_events) == "0" && task3(log_only_one_val_event) == "0").to be_truthy
       end
 
       context "there are many valid events"  do
@@ -54,6 +60,13 @@ RSpec.describe 'task3' do
           # expect( task2(log_all_doesnt_match_format) ).to eql([])
         end
       end
+
+      context 'there are pair of valid events' do
+        it 'return STRING with the duration of the action' do
+
+        end
+      end
+
     end
   end
 end
