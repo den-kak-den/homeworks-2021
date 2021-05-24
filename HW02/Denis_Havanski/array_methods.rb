@@ -18,6 +18,7 @@ module ArrayMethods
         for i in 0...self.size
           ret_array << self[i] if yield(self[i])
         end
+        #ret_array << 1
         ret_array
       end
       #return {}
