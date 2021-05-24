@@ -9,7 +9,6 @@ module ArrayMethods
         end
         ret_array
       end
-      #return ''
     end
 
     def my_select
@@ -18,10 +17,8 @@ module ArrayMethods
         for i in 0...self.size
           ret_array << self[i] if yield(self[i])
         end
-        #ret_array << 1
         ret_array
       end
-      #return {}
     end
 
     def my_each
@@ -29,14 +26,10 @@ module ArrayMethods
         for i in 0...self.size
           yield(self[i])
         end
+        #(self + [])
         self
       end
-      #return []
     end
 
   end
 end
-
-# arr = [1, -4, 78421397493947923408, 34.4, 0]
-#
-# puts arr.my_map{}

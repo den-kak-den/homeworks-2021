@@ -45,7 +45,7 @@ RSpec.describe ArrayMethods do
       let(:more_than) { refer = 10 }
       it 'return new array with changes' do
         new_number_arr = number_arr.my_select { |elem| elem > 10 }
-        new_empty_arr = empty_arr.my_select { |elem| elem > 10 }
+        new_empty_arr = empty_arr.my_select { |elem| elem > 1 }
         expect(new_number_arr === [78421397493947923408, 34.4]  && new_empty_arr == []).to be true
       end
     end
@@ -61,8 +61,9 @@ RSpec.describe ArrayMethods do
     end
 
     context 'if block given' do
-      #  expect()
-
+      it 'return original array!!!' do
+        (expect((number_arr.my_each{ |elem| elem + 100000000000000000 } === number_arr) && mixed_arr.my_each{ |elem| elem.to_s } === mixed_arr).to be true) and expect(empty_arr.my_each{ |elem| elem.nil? puts "EMPTY!!!" }).to be empty_arr
+      end
     end
   end
 end
