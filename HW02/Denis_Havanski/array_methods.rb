@@ -9,6 +9,7 @@ module ArrayMethods
         end
         ret_array
       end
+      #return ''
     end
 
     def my_select
@@ -19,6 +20,7 @@ module ArrayMethods
         end
         ret_array
       end
+      #return {}
     end
 
     def my_each
@@ -28,7 +30,12 @@ module ArrayMethods
         end
         self
       end
+      #return []
     end
 
   end
 end
+
+# arr = [1, -4, 78421397493947923408, 34.4, 0]
+#
+# puts arr.my_map{}
