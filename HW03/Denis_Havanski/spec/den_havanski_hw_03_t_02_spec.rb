@@ -38,8 +38,7 @@ RSpec.describe 'task2' do
 
     context "when there is no suitable string at the input" do
       it 'return an empty array' do
-        input = log_no_suitable_input
-          expect{ task2(input)}.to raise_error(NoMethodError, "NoMethodError: \n undefined method `each' for 1243354:Integer")
+          expect{ task2(log_no_suitable_input)}.to raise_error(NoMethodError, "undefined method `split' for 1243354:Integer")
         end
     end
 
