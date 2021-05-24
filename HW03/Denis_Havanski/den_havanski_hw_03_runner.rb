@@ -70,3 +70,5 @@ puts "\n----- Task_4 -----"
 puts task4('hel2!lo')
 puts task4('wicked .. !')
 puts task4('LJjom&*&odfщоыо/?<вадоыва938984:*(Щьдьждб*&(*KJLMLM<:<')
+puts task4('')
+puts task4(:string)
