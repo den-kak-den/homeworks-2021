@@ -11,8 +11,8 @@ RSpec.describe ArrayMethods do
   let(:mixed_arr) { ['sadfs', 645, :symb, {1=>'1'}, true] }
   let(:empty_arr) { [] }
 
-  let(:no_block) { [] }
-  let(:block_multiply_10) { :array.each {|el| el *= 10} }
+  let(:empty_block) { }
+  #let(:block_multiply_10) { |elem| a = elem * 10, a}
 
 
   describe '#my_map' do
@@ -25,7 +25,15 @@ RSpec.describe ArrayMethods do
   end
 
     context 'if block given' do
-      #  expect()
+      it 'return new array with changes' do
+        new_number_arr = []
+        number_arr.my_map { |elem| new_number_arr << elem * 10 }
+        # new_mixed_arr = []
+        # mixed_arr.my_map { |elem| new_mixed_arr << elem * 10 }
+        new_empty_arr = []
+        empty_arr.my_map { |elem| new_empty_arr << elem * 10 }
+        expect(new_number_arr == [10, -40, 784213974939479234080, 344, 0] && new_empty_arr == []).to be true
+      end
     end
   end
 
@@ -58,6 +66,5 @@ RSpec.describe ArrayMethods do
       #  expect()
 
     end
-
   end
 end
