@@ -57,13 +57,13 @@ RSpec.describe 'task3' do
 
       context "there are many valid events"  do
         it 'return an array of duration betwenn 1st and 2nd, 2nd and 3rd and etc' do
-          # expect( task2(log_all_doesnt_match_format) ).to eql([])
+          expect( task3(log_more_two_val_events) ).to eql(["0.1", "49.0", "21.0"])
         end
       end
 
       context 'there are pair of valid events' do
         it 'return STRING with the duration of the action' do
-
+          expect( task3(log_normal) ).to eql("49.1")
         end
       end
 
