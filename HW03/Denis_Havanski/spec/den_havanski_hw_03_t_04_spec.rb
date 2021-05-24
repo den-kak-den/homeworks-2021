@@ -18,14 +18,14 @@ RSpec.describe 'task4' do
 
     context 'when there is valid string' do
       it 'return hash with count of letters and digits in the string' do
-        expect( task4(string_with_all) == {:letters=>5, :digits=>1}).to be_truthy
-        expect( task4(string_without_dig) == {:letters=>6, :digits=>0}).to be_truthy
-        expect( task4(string_with_all_all) == {:letters=>32, :digits=>6}).to be_truthy
+        expect( task4(string_with_all)).to eql({:letters=>5, :digits=>1})
+        expect( task4(string_without_dig)).to eql( {:letters=>6, :digits=>0})
+        expect( task4(string_with_all_all)).to eql({:letters=>32, :digits=>6})
       end
 
       context "when there is empty string"  do
         it 'return {letters: 0, digits: 0}' do
-          #expect( task2(log_all_doesnt_match_format) ).to eql([])
+          #expect( task4(string_empty) ).to eql([])
         end
       end
 
