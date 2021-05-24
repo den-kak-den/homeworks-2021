@@ -66,7 +66,6 @@ RSpec.describe 'task3' do
           expect( task3(log_normal) ).to eql("49.1")
         end
       end
-
     end
   end
 end

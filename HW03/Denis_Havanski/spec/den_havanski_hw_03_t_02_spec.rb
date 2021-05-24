@@ -26,7 +26,11 @@ RSpec.describe 'task2' do
 
     context 'when log is normal' do
       it 'an array of formatted strings without errors' do
-        array = ["23/Apr/2018:20:30:39 +0300 FROM: 10.6.246.103 TO: /TEST/2/MESSAGES", "23/Apr/2018:20:30:42 +0300 FROM: 10.6.246.101 TO: /TEST/2/RUN", "23/Apr/2018:20:31:39 +0300 FROM: 10.6.246.101 TO: /TEST/2/MESSAGES"]
+        array = [
+          "23/Apr/2018:20:30:39 +0300 FROM: 10.6.246.103 TO: /TEST/2/MESSAGES",
+          "23/Apr/2018:20:30:42 +0300 FROM: 10.6.246.101 TO: /TEST/2/RUN",
+          "23/Apr/2018:20:31:39 +0300 FROM: 10.6.246.101 TO: /TEST/2/MESSAGES"
+        ]
         expect( task2(log_normal) ).to eql(array)
       end
 
@@ -40,8 +44,7 @@ RSpec.describe 'task2' do
       it 'return an empty array' do
           expect{ task2(log_no_suitable_input)}.to raise_error(NoMethodError, "undefined method `split' for 1243354:Integer")
         end
-    end
-
+      end
     end
   end
-  end
+end
