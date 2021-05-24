@@ -25,7 +25,7 @@ RSpec.describe 'task4' do
 
       context "when there is empty string"  do
         it 'return {letters: 0, digits: 0}' do
-          #expect( task4(string_empty) ).to eql([])
+          expect( task4(string_empty) ).to eql({letters: 0, digits: 0})
         end
       end
 
