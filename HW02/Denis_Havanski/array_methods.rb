@@ -26,7 +26,6 @@ module ArrayMethods
         for i in 0...self.size
           yield(self[i])
         end
-        #(self + [])
         self
       end
     end
