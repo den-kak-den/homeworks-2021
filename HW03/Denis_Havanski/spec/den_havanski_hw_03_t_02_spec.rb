@@ -7,25 +7,22 @@ RSpec.describe 'task2' do
   describe '#return_check_result' do
 
     let(:log_normal) do <<~INPUT
-  10.6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0498
-  10.6.246.101 - - [23/Apr/2018:20:30:42 +0300] "POST /test/2/run HTTP/1.1" 200 - 0.2277
-  2018-04-23 20:30:42: SSL ERROR, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSL: System error: Undefined error: 0 - 0>
-  10.6.246.101 - - [23/Apr/2018:20:31:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0290
+      10.6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0498
+      10.6.246.101 - - [23/Apr/2018:20:30:42 +0300] "POST /test/2/run HTTP/1.1" 200 - 0.2277
+      2018-04-23 20:30:42: SSL ERROR, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSL: System error: Undefined error: 0 - 0>
+      10.6.246.101 - - [23/Apr/2018:20:31:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0290
     INPUT
     end
 
     let(:log_all_doesnt_match_format) do <<~INPUT
-  .6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0498
-  10.6.24ds6.101 - - [23/Apr/2018:20:30:42 +0300] "POST /test/2/run HTTP/1.1" 200 - 0.2277
-  2018-04-23 20:30:42: SSL ERROR, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSL: System error: Undefined error: 0 - 0>
-  10.6.246.101 - - [23/Apr/2018-20:31:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0290
+      .6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0498
+      10.6.24ds6.101 - - [23/Apr/2018:20:30:42 +0300] "POST /test/2/run HTTP/1.1" 200 - 0.2277
+      2018-04-23 20:30:42: SSL ERROR, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSL: System error: Undefined error: 0 - 0>
+      10.6.246.101 - - [23/Apr/2018-20:31:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0290
     INPUT
     end
 
-    let(:log_no_suitable_input) { ['10.6.246.103 - - [23/Apr/2018:20:30:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0498',
-      '10.6.246.101 - - [23/Apr/2018:20:30:42 +0300] "POST /test/2/run HTTP/1.1" 200 - 0.2277',
-      '2018-04-23 20:30:42: SSL ERROR, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSL: System error: Undefined error: 0 - 0>',
-      '10.6.246.101 - - [23/Apr/2018:20:31:39 +0300] "POST /test/2/messages HTTP/1.1" 200 48 0.0290'] }
+    let(:log_no_suitable_input) { 1243354 }
 
     context 'when log is normal' do
       it 'an array of formatted strings without errors' do
@@ -41,10 +38,9 @@ RSpec.describe 'task2' do
 
     context "when there is no suitable string at the input" do
       it 'return an empty array' do
-        input = task2(log_no_suitable_input)
-        error = raise_error(NoMethodError, "undefined method `split' for #{input}:Array" )
-        expect( input ).to raise(error) # ????
-      end
+        input = log_no_suitable_input
+          expect{ task2(input)}.to raise_error(NoMethodError, "NoMethodError: \n undefined method `each' for 1243354:Integer")
+        end
     end
 
     end
