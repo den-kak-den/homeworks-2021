@@ -31,7 +31,7 @@ RSpec.describe 'task4' do
 
       context "when there is no string" do
         it 'return error' do
-          #expect{ task2(input)}.to raise_error(NoMethodError, "NoMethodError: \n undefined method `each' for 1243354:Integer")
+          expect{ task4(no_string)}.to raise_error(NoMethodError, "undefined method `count' for :string:Symbol")
         end
       end
     end
