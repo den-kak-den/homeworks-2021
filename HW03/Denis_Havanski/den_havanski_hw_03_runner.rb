@@ -25,7 +25,7 @@ logs = <<~INPUT
 INPUT
 
 puts "\n----- Task_2 -----"
-puts task2(logs)
+p task2(logs)
 
 #######################
 

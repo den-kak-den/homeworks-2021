@@ -52,7 +52,7 @@ INPUT
       end
     end
 
-    context 'when log not_contains error' do
+    context 'when log does not_contain error' do
       it 'return empty string' do
         expect(task1(log_without_error)).to eql('')
       end
