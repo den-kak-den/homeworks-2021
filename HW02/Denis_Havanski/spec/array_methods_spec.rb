@@ -15,8 +15,6 @@ RSpec.describe ArrayMethods do
     context 'when block is not given' do
       it 'returns nil' do
         expect(number_arr.my_map).to be nil
-        expect(mixed_arr.my_map).to be nil
-        expect(empty_arr.my_map).to be nil
       end
   end
 
@@ -36,8 +34,6 @@ RSpec.describe ArrayMethods do
     context 'when block is not given' do
       it 'return nil' do
         expect(number_arr.my_select).to be nil
-        expect(mixed_arr.my_select).to be nil
-        expect(empty_arr.my_select).to be nil
       end
   end
 
@@ -56,8 +52,6 @@ RSpec.describe ArrayMethods do
     context 'when block is not given' do
       it 'return nil' do
         expect(number_arr.my_each).to be nil
-        expect(mixed_arr.my_each).to be nil
-        expect(empty_arr.my_each).to be nil
       end
     end
 
