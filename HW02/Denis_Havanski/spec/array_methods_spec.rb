@@ -13,7 +13,7 @@ RSpec.describe ArrayMethods do
 
   describe '#my_map' do
     context 'if no_block given' do
-      it 'return nil' do
+      it 'returns nil' do
         expect(number_arr.my_map).to be nil
         expect(mixed_arr.my_map).to be nil
         expect(empty_arr.my_map).to be nil
