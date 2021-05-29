@@ -12,7 +12,7 @@ RSpec.describe ArrayMethods do
   let(:empty_arr) { [] }
 
   describe '#my_map' do
-    context 'if no_block given' do
+    context 'when block is not given' do
       it 'returns nil' do
         expect(number_arr.my_map).to be nil
         expect(mixed_arr.my_map).to be nil
@@ -20,7 +20,7 @@ RSpec.describe ArrayMethods do
       end
   end
 
-    context 'if block given' do
+    context 'when block is given' do
       it 'return new array with changes' do
         new_number_arr = []
         number_arr.my_map { |elem| new_number_arr << elem * 10 }
@@ -33,7 +33,7 @@ RSpec.describe ArrayMethods do
   end
 
   describe '#my_select' do
-    context 'if no block given' do
+    context 'when block is not given' do
       it 'return nil' do
         expect(number_arr.my_select).to be nil
         expect(mixed_arr.my_select).to be nil
@@ -41,7 +41,7 @@ RSpec.describe ArrayMethods do
       end
   end
 
-    context 'if block given' do
+    context 'when block is given' do
       let(:more_than) { refer = 10 }
       it 'return new array with changes' do
         new_number_arr = number_arr.my_select { |elem| elem > 10 }
@@ -53,7 +53,7 @@ RSpec.describe ArrayMethods do
   end
 
   describe '#my_each' do
-    context 'if no block given' do
+    context 'when block is not given' do
       it 'return nil' do
         expect(number_arr.my_each).to be nil
         expect(mixed_arr.my_each).to be nil
@@ -61,7 +61,7 @@ RSpec.describe ArrayMethods do
       end
     end
 
-    context 'if block given' do
+    context 'when block is given' do
       it 'return original array!!!' do
         expect(number_arr.my_each{ |elem| elem + 100000000000000000 }).to eql(number_arr)
         expect(mixed_arr.my_each{ |elem| elem.to_s }).to eql(mixed_arr)
@@ -70,3 +70,4 @@ RSpec.describe ArrayMethods do
     end
   end
 end
+
