@@ -50,9 +50,16 @@ RSpec.describe 'task3' do
     INPUT
     end
 
-    context 'when there are no valid events or only one' do
-      it 'returns zero' do
-        expect( task3(log_no_val_events) == "0" && task3(log_only_one_val_event) == "0").to be_truthy
+      context 'when there are no valid events' do
+        it 'returns zero' do
+          expect( task3(log_no_val_events)).to eq("0")
+        end
+      end
+
+      context 'when there are only one valid event' do
+        it 'returns zero' do
+          expect( task3(log_only_one_val_event)).to eq("0")
+        end
       end
 
       context "there are many valid events"  do
@@ -68,4 +75,4 @@ RSpec.describe 'task3' do
       end
     end
   end
-end
+
