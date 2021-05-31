@@ -24,7 +24,7 @@ RSpec.describe 'task4' do
       end
 
       context "when there is empty string"  do
-        it 'return {letters: 0, digits: 0}' do
+        it 'return the hash with zeros as all totals' do
           expect( task4(string_empty) ).to eql({letters: 0, digits: 0})
         end
       end
