@@ -43,7 +43,7 @@ RSpec.describe 'task1' do
         expect( task1(log_with_downcase_error) ).to eql('2018-04-23 20:30:42: SSL error, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSLError: System error: Undefined error: 0 - 0>')
       end
 
-      it 'return full text of the 1st line with error_in_UPcase' do
+      it 'return full text of the 1st line with error in UPcase' do
         expect( task1(log_with_upcase_error) ).to eql('2018-04-23 20:30:42: SSL error, peer: 10.6.246.101, peer cert: , #<Puma::MiniSSL::SSLError: System ERROR: Undefined error: 0 - 0>')
       end
 
@@ -52,7 +52,7 @@ RSpec.describe 'task1' do
       end
     end
 
-    context 'when log does not_contain error' do
+    context 'when log does not contains errors' do
       it 'return empty string' do
         expect(task1(log_without_error)).to eql('')
       end
