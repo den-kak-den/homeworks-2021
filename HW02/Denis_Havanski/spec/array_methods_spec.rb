@@ -19,7 +19,7 @@ RSpec.describe ArrayMethods do
   end
 
     context 'when block is given' do
-      it 'return new array with changes' do
+      it 'return new array with changes', :aggregate_failures do
         new_number_arr = []
         number_arr.my_map { |elem| new_number_arr << elem * 10 }
         new_empty_arr = []
