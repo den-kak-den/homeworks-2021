@@ -17,7 +17,7 @@ RSpec.describe 'task4' do
     let(:no_string) { :string }
 
     context 'when there is valid string' do
-      it 'return hash with count of letters and digits in the string' do
+      it 'return hash with count of letters and digits', :aggregate_failures do
         expect( task4(string_with_all)).to eql({:letters=>5, :digits=>1})
         expect( task4(string_without_dig)).to eql( {:letters=>6, :digits=>0})
         expect( task4(string_with_all_all)).to eql({:letters=>32, :digits=>6})
